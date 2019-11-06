@@ -56,6 +56,10 @@ class SocialGraph:
 
         random.shuffle(friendshipCombinations)
 
+        # Only need to add half of the freindships as it is a bi-directional connection
+        for i in range(numUsers * avgFriendships // 2):
+            self.addFriendship(friendshipCombinations[i][0], friendshipCombinations[i][1])
+
     def getAllSocialPaths(self, userID):
         """
         Takes a user's userID as an argument
