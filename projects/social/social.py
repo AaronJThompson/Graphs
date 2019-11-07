@@ -1,5 +1,21 @@
 import random
 
+class Queue:
+    def __init__(self):
+        self.storage = []
+    
+    def enqueue(self, value):
+        self.storage.append(value)
+
+    def dequeue(self):
+        if (self.size()) > 0:
+            return self.storage.pop(0)
+        else:
+            return None
+
+    def size(self):
+        return len(self.storage)
+        
 class User:
     def __init__(self, name):
         self.name = name
