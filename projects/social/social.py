@@ -1,4 +1,4 @@
-
+import random
 
 class User:
     def __init__(self, name):
@@ -44,11 +44,21 @@ class SocialGraph:
         self.lastID = 0
         self.users = {}
         self.friendships = {}
-        # !!!! IMPLEMENT ME
+        
+        for i in range(0, numUsers):
+            self.addUser(f"User {i}")
 
-        # Add users
+        friendshipCombinations = []
 
-        # Create friendships
+        for userID in self.users:
+            for friendID in range(userID + 1, self.lastID + 1):
+                friendshipCombinations.append((userID, friendID))
+
+        random.shuffle(friendshipCombinations)
+
+        # Only need to add half of the freindships as it is a bi-directional connection
+        for i in range(numUsers * avgFriendships // 2):
+            self.addFriendship(friendshipCombinations[i][0], friendshipCombinations[i][1])
 
     def getAllSocialPaths(self, userID):
         """
